@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { Switch, Route } from "wouter";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Portfolio from "@/pages/Portfolio";
 import NotFound from "@/pages/not-found";
 import PageLoader from "@/components/PageLoader";
 
-function Router() {
+function AppRouter() {
   return (
-    <Switch>
-      <Route path="/" component={Portfolio} />
+    <Routes>
+      <Route path="/" element={<Portfolio />} />
       {/* Fallback to 404 */}
-      <Route component={NotFound} />
-    </Switch>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
@@ -27,7 +27,9 @@ function App() {
     <TooltipProvider>
       {isLoading && <PageLoader onComplete={handleLoadingComplete} />}
       <Toaster />
-      <Router />
+      <HashRouter>
+        <AppRouter />
+      </HashRouter>
     </TooltipProvider>
   );
 }
