@@ -2,6 +2,11 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Github, ExternalLink } from 'lucide-react';
+import thumbmarksImg from '../assets/thumbmarks.png'
+import planetzeImg from '../assets/planetze.jpg'
+import quiztimeImg from '../assets/quiztime.png'
+import tetrisImg from '../assets/tetris.png'
+import pbsImg from '../assets/pbs.png'
 
 interface ProjectData {
   id: string;
@@ -19,29 +24,32 @@ const projectsData: ProjectData[] = [
   {
     id: 'thumbmarks',
     title: 'Thumbmarks',
-    description: 'A full-stack Chrome extension solving web browsing pain points with visual bookmarking system built on WXT and React with Supabase backend',
+    description: 'Introducing Thumbmarks, the intelligent Chrome Extension that transforms how you save and revisit webpages. Instead of just bookmarking a URL, Thumbmarks captures the visual state of your page, including its precise scroll position and a screenshot, allowing you to instantly jump back to exactly where you left off, every single time.',
     repo: 'asadbmirza/Thumbmarks',
     technologies: ['TypeScript', 'React', 'WXT', 'Supabase', 'Chrome API'],
     featured: true,
-    homepage: undefined
+    homepage: undefined,
+    image: thumbmarksImg
   },
   {
     id: 'planetze',
     title: 'Planetze (Carbon Emissions Dashboard)', 
     description: 'Android app in Java with CRUD operations, push notifications, and carbon footprint visualization backed by Firebase',
     repo: 'asadbmirza/Planetze-Mobile-Application',
-    technologies: ['Java', 'Android', 'Firebase', 'Material Design'],
+    technologies: ['Java', 'Android Studio', 'Firebase'],
     featured: true,
-    homepage: undefined
+    homepage: undefined,
+    image: planetzeImg
   },
   {
     id: 'flashcard',
-    title: 'Flashcard Learning System',
+    title: 'Quiztime: Flashcard Learning System',
     description: 'Interactive flashcard application for efficient learning with spaced repetition algorithms and progress tracking',
     repo: 'RishiJain905/flashcard-project',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
     featured: true,
-    homepage: undefined
+    homepage: undefined,
+    image: quiztimeImg
   },
   {
     id: 'tetris',
@@ -50,7 +58,8 @@ const projectsData: ProjectData[] = [
     repo: 'asadbmirza/tetris-assembly',
     technologies: ['Assembly', 'x86', 'Game Development'],
     featured: false,
-    homepage: undefined
+    homepage: undefined,
+    image: tetrisImg
   },
   {
     id: 'battleship',
@@ -66,9 +75,10 @@ const projectsData: ProjectData[] = [
     title: 'Pokemon Battle Simulator',
     description: 'Turn-based Pokemon battle simulation with accurate battle mechanics, type effectiveness, and move calculations',
     repo: 'asadbmirza/Pokemon-Battle-Simulator',
-    technologies: ['Python', 'Game Logic', 'OOP'],
+    technologies: ['Java', 'Game Logic', 'OOP'],
     featured: false,
-    homepage: undefined
+    homepage: undefined,
+    image: pbsImg
   }
 ];
 

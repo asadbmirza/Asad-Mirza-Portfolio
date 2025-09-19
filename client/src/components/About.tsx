@@ -22,7 +22,7 @@ export default function About() {
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6" data-testid="text-about-experience">
                 At StackAdapt, I've led the design and launch of full-stack features that 
-                directly impact 2,000+ advertisers, cutting operational work by 95% and 
+                directly impact 2,000+ advertisers, cutting tedious operational work and 
                 safeguarding company revenue. I'm passionate about building scalable 
                 solutions and optimizing user experiences.
               </p>
@@ -61,7 +61,8 @@ export default function About() {
                 Focus Areas
               </h4>
               <div className="flex flex-wrap gap-2">
-                {['Full-Stack Development', 'Distributed Systems', 'AdTech', 'UI/UX'].map((area) => (
+                {['Full-Stack Development', 'Frontend Development', 'Backend Development', 
+                'Systems Development', 'Software Engineering', 'Computer Architechture', 'Scripting', 'AdTech', 'UI/UX'].map((area) => (
                   <span 
                     key={area} 
                     className="px-3 py-1 bg-primary/10 text-primary rounded-md text-sm"

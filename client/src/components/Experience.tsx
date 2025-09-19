@@ -24,7 +24,7 @@ const experiences: ExperienceItem[] = [
     achievements: [
       'Shipped multiple scalable analytics & observability features/fixes for an AdTech platform serving 2,000+ advertisers handling large-scale workflow data'
     ],
-    technologies: ['React', 'TypeScript', 'Rails', 'GraphQL', 'Docker']
+    technologies: ['React', 'TypeScript', 'Rails', 'GraphQL', 'Docker', 'React Query', 'RSpec', 'Jest']
   },
   {
     id: 'stackadapt-intern',
@@ -34,11 +34,12 @@ const experiences: ExperienceItem[] = [
     period: 'January 2025 – April 2025',
     description: 'Measurements Team',
     achievements: [
-      'Led the end-to-end design and launch of a full-stack deletion pipeline, cutting 95% of repetitive on-call work and preventing unintended charges for 2,000+ advertisers',
+      'Led the end-to-end design and launch of a full-stack deletion pipeline, cutting a large chunk of repetitive on-call work and preventing unintended charges for 2,000+ advertisers',
       'Refactored an old dropdown table with SOLID principles, supporting customizable props and replacing 1,000+ LoC',
-      'Wrote requirements-driven black-box RSpec & Jest suites for every feature shipped, keeping code above 90% coverage'
+      'Wrote requirements-driven black-box RSpec & Jest suites for every feature shipped, keeping code above 90% coverage',
+      'Collaborated with PMs, designers, and code owners to nail down requirements and trade-offs early, helping deliver multiple 8-point stories with zero scope churn.'
     ],
-    technologies: ['GraphQL', 'Rails', 'React Query', 'RSpec', 'Jest']
+    technologies: ['React', 'TypeScript', 'Rails', 'GraphQL', 'Docker', 'React Query', 'RSpec', 'Jest']
   },
   {
     id: 'saige',
@@ -48,9 +49,9 @@ const experiences: ExperienceItem[] = [
     period: 'November 2024 – January 2025',
     description: 'Real Estate Analytics Platform',
     achievements: [
-      'Developed new searching & optimized web scraping features leading to a 27% higher client conversion rate',
+      'Developed new searching & optimized web scraping features for a data analytics real estate platform for agents that houses thousands of properties, leading to a 27% higher client conversion rate',
       'Modularized real estate filtering code by abstracting shared logic into reusable classes, accelerating development from days to hours',
-      'Optimized data pipeline with VPN switcher on AWS EC2 that increased throughput by 500%'
+      'Optimized real estate data pipeline code by developing a VPN switcher on AWS EC2 that increased throughput by 500% to deliver fresher metrics to users'
     ],
     technologies: ['React', 'Python', 'Flask', 'MySQL', 'AWS EC2']
   },
@@ -62,8 +63,8 @@ const experiences: ExperienceItem[] = [
     period: 'September 2024 – Present',
     description: 'Computer Science Department',
     achievements: [
-      'Selected by Professor Gawde from 200+ applicants to help teach 600+ first-year students',
-      'Supported students individually, resulting in multiple requests for personal office hours'
+      'Selected by Professor Gawde from 200+ applicants as an undergrad to teach over 600 students Python and computer science concepts during lectures, leading to being personally requested for office hours.',
+      'Led weekly office hours, code-reviewing programming assignments and providing constructive feedback to enhance understanding of coding concepts and problem-solving strategies.'
     ],
     technologies: ['Python', 'Teaching', 'Mentorship']
   },
@@ -76,9 +77,22 @@ const experiences: ExperienceItem[] = [
     description: 'Professor Brian Harrington',
     achievements: [
       'Co-authored and submitted "A Systematic Literature Mapping of Early Generative AI Research in CS Education" to SIGCSE 2025',
-      'Presented research findings at academic seminars with faculty and grad students'
+      'Presented research findings at academic seminars with faculty and grad students to refine methodology and interpretations.'
     ],
     technologies: ['Research', 'Academic Writing', 'Data Analysis']
+  },
+  {
+    id: 'riipen-servicenext',
+    title: 'Frontend Developer',
+    company: 'Riipen | ServiceNext',
+    location: 'Remote',
+    period: 'July 2024 – September 2024',
+    description: 'Service Professional Marketplace',
+    achievements: [
+      'Developed responsive frontend components from scratch for a service provider web application using Figma, React, JavaScript, and CSS, showcasing expertise in frontend development and ehnancing UI/UX.', 
+      'Led React component development within an agile environment, taking ownership of code reviews for fellow interns and majorly structuring user profile forms, validation, and scheduling systems using Formik, Yup, and Axios, earning a $1,400 project award from Riipen for excellence.'
+    ],
+    technologies: ['React', 'React Bootstrap', 'Javascript', 'Formik']
   }
 ];
 

@@ -26,13 +26,13 @@ const skillCategories: SkillCategory[] = [
     id: 'tools',
     title: 'Developer Tools & Testing',
     icon: Wrench,
-    skills: ['RSpec', 'Jest', 'Pytest', 'Git', 'Linux', 'Jira', 'Docker', 'AWS EC2', 'CI/CD', 'Pipelines']
+    skills: ['RSpec', 'Jest', 'Pytest', 'Git', 'Linux', 'Jira', 'Docker', 'AWS EC2', 'CI/CD', 'Data Pipelines']
   },
   {
     id: 'practices',
     title: 'Practices & Concepts',
     icon: Database,
-    skills: ['Object Oriented Design', 'REST', 'SOLID', 'Agile/Scrum', 'Distributed Computing', 'Networking Fundamentals (TCP)', 'AdTech']
+    skills: ['Object Oriented Design', 'REST', 'SOLID', 'Agile/Scrum', 'Leadership', 'Project Management', 'Distributed Computing', 'Networking Fundamentals (TCP)', 'AdTech']
   }
 ];
 

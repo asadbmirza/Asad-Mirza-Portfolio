@@ -5,7 +5,7 @@
   "license": "MIT",
   "homepage": "https://asadbmirza.github.io/Asad-Mirza-Portfolio",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
+    "dev": "vite",
     "build": "vite build",
     "start": "NODE_ENV=production node dist/index.js",
     "check": "tsc",

@@ -10,7 +10,7 @@ interface CourseCategory {
 const relevantCourses: CourseCategory[] = [
   {
     category: 'Core Computer Science',
-    courses: ['Software Design', 'Systems Programming', 'Computer Organization', 'Data Structures & Algorithms']
+    courses: ['Software Design', 'Systems Programming', 'Computer Organization', 'Data Structures & Algorithms', 'Human Computer Interaction']
   },
   {
     category: 'Mathematics',

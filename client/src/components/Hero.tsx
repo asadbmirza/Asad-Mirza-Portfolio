@@ -99,8 +99,8 @@ export default function Hero() {
 
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed" data-testid="text-description">
           Currently a Returning Software Engineer Intern at StackAdapt, building scalable 
-          analytics solutions. Computer Science student at the University of Toronto with 
-          a passion for distributed systems and full-stack development.
+          measurements solutions for 2000+ clients. Computer Science student and Teaching Assistant at the University of Toronto with 
+          a passion for systems and full-stack development.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
@@ -126,10 +126,16 @@ export default function Hero() {
         <Button 
           size="lg" 
           className="gap-2"
-          onClick={() => console.log('Scrolling to projects')}
+          onClick={() => {
+            const element = document.getElementById("experience");
+            if (element) {
+              const offsetTop = element.offsetTop - 80;
+              window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+            }
+          }}
           data-testid="button-view-work"
         >
-          View My Work
+          View My Experience
           <ExternalLink className="w-4 h-4" />
         </Button>
       </div>
