@@ -62,12 +62,6 @@ export default function Hero() {
       testId: 'link-email'
     },
     {
-      icon: Phone,
-      href: 'tel:905-244-5490',
-      label: 'Phone',
-      testId: 'link-phone'
-    },
-    {
       icon: FileText,
       href: 'https://drive.google.com/drive/folders/1-2zHdZil_2alXBk0OXFyBjzLqMRty9Jr?usp=drive_link',
       label: 'Resume',

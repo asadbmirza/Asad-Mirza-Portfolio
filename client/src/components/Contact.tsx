@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, Github, Linkedin, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, Github, Linkedin, MapPin, ExternalLink } from 'lucide-react';
 
 interface ContactMethod {
   icon: React.ElementType;
@@ -19,14 +19,6 @@ const contactMethods: ContactMethod[] = [
     href: 'mailto:asadbmirza.05@gmail.com',
     description: 'Best way to reach me for opportunities',
     testId: 'contact-email'
-  },
-  {
-    icon: Phone,
-    label: 'Phone',
-    value: '905-244-5490',
-    href: 'tel:905-244-5490',
-    description: 'Available for calls and messages',
-    testId: 'contact-phone'
   },
   {
     icon: Github,
@@ -63,7 +55,7 @@ export default function Contact() {
           with fellow developers. Feel free to reach out through any of these channels.
         </p>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {contactMethods.map((method) => (
             <Card 
               key={method.label} 
