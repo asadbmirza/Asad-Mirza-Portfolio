@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Rocket } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Menu, Rocket, X } from 'lucide-react';
 
 interface ExperienceItem {
   id: string;
@@ -135,27 +135,76 @@ const projects: ProjectItem[] = [
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.35, rootMargin: '-10% 0px -45% 0px' },
-    );
+    const sectionNodes = navItems
+      .map((item) => document.getElementById(item.id))
+      .filter((node): node is HTMLElement => node !== null);
 
-    navItems.forEach((item) => {
-      const node = document.getElementById(item.id);
-      if (node) {
-        observer.observe(node);
+    const updateActiveSection = () => {
+      const headerOffset = 104;
+      const scrollPosition = window.scrollY + headerOffset;
+      const pageBottom = window.scrollY + window.innerHeight;
+      const nearBottom = pageBottom >= document.documentElement.scrollHeight - 4;
+
+      if (nearBottom) {
+        setActiveSection(navItems[navItems.length - 1].id);
+        return;
       }
-    });
 
-    return () => observer.disconnect();
+      let currentSection = navItems[0].id;
+      sectionNodes.forEach((section) => {
+        if (scrollPosition >= section.offsetTop) {
+          currentSection = section.id;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -173,35 +222,93 @@ export default function Portfolio() {
   return (
     <div className="portfolio-shell min-h-screen bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
-        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 md:px-8">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 md:px-8">
           <button onClick={() => scrollToSection('home')} className="brand-mark" data-testid="button-brand">
             Asad.M
           </button>
 
-          <nav className="flex flex-wrap items-center gap-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`nav-pill ${activeSection === item.id ? 'nav-pill-active' : ''}`}
-                data-testid={`nav-${item.id}`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          <div className="hidden items-center gap-2 md:flex">
+            <nav className="flex items-center gap-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`nav-pill ${activeSection === item.id ? 'nav-pill-active' : ''}`}
+                  data-testid={`nav-${item.id}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
 
+            <a
+              href="https://drive.google.com/drive/folders/1-2zHdZil_2alXBk0OXFyBjzLqMRty9Jr?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="primary-pill"
+              data-testid="button-resume"
+            >
+              Resume
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="mobile-menu-trigger md:hidden"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            data-testid="button-mobile-menu"
+          >
+            {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
+      </header>
+
+      <div
+        className={`mobile-nav-overlay ${isMobileMenuOpen ? 'is-open' : ''}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+        aria-hidden={!isMobileMenuOpen}
+      />
+      <aside className={`mobile-nav-drawer ${isMobileMenuOpen ? 'is-open' : ''}`} aria-hidden={!isMobileMenuOpen}>
+        <div className="flex items-center justify-between border-b border-border/70 px-5 py-4">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Menu</span>
+          <button
+            type="button"
+            className="mobile-menu-trigger"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close navigation menu"
+            data-testid="button-mobile-menu-close"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+        <nav className="flex flex-1 flex-col gap-2 px-5 py-5">
+          {navItems.map((item) => (
+            <button
+              key={`mobile-${item.id}`}
+              onClick={() => {
+                scrollToSection(item.id);
+                setIsMobileMenuOpen(false);
+              }}
+              className={`mobile-nav-pill ${activeSection === item.id ? 'mobile-nav-pill-active' : ''}`}
+              data-testid={`mobile-nav-${item.id}`}
+            >
+              {item.label}
+            </button>
+          ))}
           <a
             href="https://drive.google.com/drive/folders/1-2zHdZil_2alXBk0OXFyBjzLqMRty9Jr?usp=drive_link"
             target="_blank"
             rel="noreferrer"
-            className="primary-pill"
-            data-testid="button-resume"
+            className="primary-pill mt-3 w-full justify-center"
+            onClick={() => setIsMobileMenuOpen(false)}
+            data-testid="mobile-button-resume"
           >
             Resume
           </a>
-        </div>
-      </header>
+        </nav>
+      </aside>
 
       <main className="mx-auto w-full max-w-6xl space-y-6 px-4 pb-16 pt-28 md:px-8">
         <section id="home" className="section-frame reveal-up">
