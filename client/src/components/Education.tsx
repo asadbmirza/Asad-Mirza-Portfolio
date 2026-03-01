@@ -1,121 +1,134 @@
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { GraduationCap, Award, BookOpen, Calendar } from 'lucide-react';
+import { motion } from "framer-motion";
+import { FiAward } from "react-icons/fi";
+import content from "../data/portfolio-content.json";
+
+const { education } = content;
 
 interface CourseCategory {
   category: string;
   courses: string[];
 }
 
-const relevantCourses: CourseCategory[] = [
-  {
-    category: 'Core Computer Science',
-    courses: ['Software Design', 'Systems Programming', 'Computer Organization', 'Data Structures & Algorithms', 'Human Computer Interaction']
-  },
-  {
-    category: 'Mathematics',
-    courses: ['Linear Algebra I-II', 'Calculus I-III']
-  }
-];
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+};
 
-const awards = [
-  'Dean\'s List',
-  'President\'s Scholarship Award ($7,500)',
-  'Academic Excellence Recognition'
-];
+const tagVariant = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 200, damping: 18 },
+  },
+};
 
 export default function Education() {
   return (
-    <section id="education" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-12 text-center" data-testid="text-education-title">
-          Education
-        </h2>
-        
-        <div className="max-w-4xl mx-auto">
-          <Card className="p-8 hover-elevate" data-testid="card-university">
-            <div className="flex items-start gap-6 mb-6">
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <GraduationCap className="w-8 h-8 text-primary" />
-              </div>
-              
-              <div className="flex-1">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                  <h3 className="text-2xl font-semibold" data-testid="text-degree">
-                    Bachelor of Science, Computer Science
-                  </h3>
-                  <div className="flex items-center gap-1 text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
-                    <span data-testid="text-duration">2023 – 2027</span>
-                  </div>
-                </div>
-                
-                <p className="text-xl text-primary font-medium mb-4" data-testid="text-university-name">
-                  University of Toronto, Toronto, ON
-                </p>
-                
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <h4 className="font-semibold mb-2 flex items-center gap-2" data-testid="text-academic-performance">
-                      <Award className="w-5 h-5 text-primary" />
-                      Academic Performance
-                    </h4>
-                    <p className="text-lg mb-2" data-testid="text-gpa">
-                      <span className="font-medium">3.70 cGPA</span>
-                    </p>
-                    
-                    <div className="space-y-1" data-testid="list-awards">
-                      {awards.map((award) => (
-                        <div key={award} className="text-muted-foreground flex items-center gap-2">
-                          <Award className="w-4 h-4 text-primary flex-shrink-0" />
-                          <span>{award}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold mb-4 flex items-center gap-2" data-testid="text-relevant-courses">
-                      <BookOpen className="w-5 h-5 text-primary" />
-                      Relevant Coursework
-                    </h4>
-                    
-                    <div className="space-y-4" data-testid="list-course-categories">
-                      {relevantCourses.map((category) => (
-                        <div key={category.category}>
-                          <h5 className="text-sm font-medium text-muted-foreground mb-2" data-testid={`text-category-${category.category.toLowerCase().replace(/\s+/g, '-')}`}>
-                            {category.category}
-                          </h5>
-                          <div className="flex flex-wrap gap-1" data-testid={`tags-courses-${category.category.toLowerCase().replace(/\s+/g, '-')}`}>
-                            {category.courses.map((course) => (
-                              <Badge 
-                                key={course} 
-                                variant="outline" 
-                                className="text-xs"
-                                data-testid={`tag-course-${course.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                              >
-                                {course}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="border-t border-border pt-6">
-                  <p className="text-muted-foreground leading-relaxed" data-testid="text-education-description">
-                    Currently pursuing a comprehensive Computer Science education with focus on 
-                    software engineering principles, systems programming, and mathematical foundations. 
-                    Consistently maintaining high academic standards while gaining practical experience 
-                    through internships and research opportunities.
-                  </p>
-                </div>
-              </div>
+    <section id="education" className="py-28 md:py-36">
+      <div className="max-w-4xl mx-auto px-6">
+        {/* Section heading — scales in */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 80, damping: 18 }}
+          className="mb-16"
+        >
+          <h2 className="font-heading text-fluid-xl font-bold text-light tracking-tight">
+            {education.title}
+          </h2>
+          <div className="mt-3 w-16 h-[2px] bg-accent rounded-full" />
+        </motion.div>
+
+        {/* Card — scales up from 0.95 */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ type: "spring", stiffness: 70, damping: 20, delay: 0.1 }}
+          className="border border-white/10 rounded-lg p-8"
+        >
+          {/* Degree & University */}
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-2">
+            <h3 className="font-heading text-light font-bold text-2xl">
+              {education.degree}
+            </h3>
+            <span className="text-muted text-sm font-medium">{education.period}</span>
+          </div>
+          <p className="text-accent font-medium text-base mb-1">
+            {education.university}
+          </p>
+          <p className="text-muted text-sm mb-6">{education.gpa}</p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.25 }}
+            className="text-muted/80 text-sm leading-relaxed mb-8"
+          >
+            {education.description}
+          </motion.p>
+
+          {/* Awards — staggered pop-in */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h4 className="text-xs uppercase tracking-widest text-muted mb-3 flex items-center gap-2">
+              <FiAward size={14} className="text-accent" />
+              Awards & Recognition
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {education.awards.map((award) => (
+                <motion.span
+                  key={award}
+                  variants={tagVariant}
+                  className="px-3 py-1 text-xs border border-accent/20 text-accent/90 rounded-full bg-accent/5"
+                >
+                  {award}
+                </motion.span>
+              ))}
             </div>
-          </Card>
-        </div>
+          </motion.div>
+
+          {/* Courses — staggered slide-up */}
+          <div className="space-y-5">
+            {(education.courseCategories as CourseCategory[]).map((cat, idx) => (
+              <motion.div
+                key={cat.category}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.15 + idx * 0.08, type: "spring", stiffness: 100, damping: 18 }}
+              >
+                <h4 className="text-xs uppercase tracking-widest text-muted mb-2.5">
+                  {cat.category}
+                </h4>
+                <motion.div
+                  variants={stagger}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="flex flex-wrap gap-2"
+                >
+                  {cat.courses.map((course) => (
+                    <motion.span
+                      key={course}
+                      variants={tagVariant}
+                      className="px-2.5 py-0.5 text-[11px] border border-white/10 text-muted rounded-full"
+                    >
+                      {course}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

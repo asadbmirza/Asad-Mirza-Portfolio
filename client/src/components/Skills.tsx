@@ -1,92 +1,130 @@
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Code2, Database, Wrench, Globe } from 'lucide-react';
+import { motion } from "framer-motion";
+import content from "../data/portfolio-content.json";
+
+const { skills } = content;
 
 interface SkillCategory {
   id: string;
   title: string;
-  icon: React.ElementType;
   skills: string[];
 }
 
-const skillCategories: SkillCategory[] = [
-  {
-    id: 'programming',
-    title: 'Programming Languages',
-    icon: Code2,
-    skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C', 'SQL', 'Ruby', 'HTML', 'CSS', 'Bash']
+/* Deterministic pseudo-random based on string hash */
+function hashCode(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+  return h;
+}
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
   },
-  {
-    id: 'frameworks',
-    title: 'Frameworks & Libraries',
-    icon: Globe,
-    skills: ['React', 'Node.js', 'Express', 'Flask', 'Ruby on Rails', 'GraphQL', 'React Query', 'MUI', 'WXT']
+};
+
+const categoryVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: "spring", stiffness: 80, damping: 20 },
   },
-  {
-    id: 'tools',
-    title: 'Developer Tools & Testing',
-    icon: Wrench,
-    skills: ['RSpec', 'Jest', 'Pytest', 'Git', 'Linux', 'Jira', 'Docker', 'AWS EC2', 'CI/CD', 'Data Pipelines']
-  },
-  {
-    id: 'practices',
-    title: 'Practices & Concepts',
-    icon: Database,
-    skills: ['Object Oriented Design', 'REST', 'SOLID', 'Agile/Scrum', 'Leadership', 'Project Management', 'Distributed Computing', 'Networking Fundamentals (TCP)', 'AdTech']
-  }
-];
+};
+
+/* Each pill gets a unique scatter origin based on its name */
+function scatterVariant(skill: string) {
+  const h = hashCode(skill);
+  const xOff = ((h % 60) - 30); // -30 to +30
+  const yOff = (((h >> 4) % 40) - 20); // -20 to +20
+  const rot = ((h >> 8) % 20) - 10; // -10 to +10 deg
+  return {
+    hidden: { opacity: 0, scale: 0.5, x: xOff, y: yOff, rotate: rot },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      x: 0,
+      y: 0,
+      rotate: 0,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
+    },
+  };
+}
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-4 text-center" data-testid="text-skills-title">
-          Technical Skills
-        </h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto" data-testid="text-skills-description">
-          A comprehensive toolkit developed through hands-on experience in software engineering, 
-          academic coursework, and personal projects.
-        </p>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category) => (
-            <Card key={category.id} className="p-6 hover-elevate" data-testid={`card-skill-category-${category.id}`}>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <category.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold" data-testid={`text-category-title-${category.id}`}>
-                  {category.title}
-                </h3>
-              </div>
-              
-              <div className="flex flex-wrap gap-2" data-testid={`tags-skills-${category.id}`}>
+    <section id="skills" className="py-28 md:py-36">
+      <div className="max-w-4xl mx-auto px-6">
+        {/* Section heading — fades up from left */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 80, damping: 20 }}
+          className="mb-6"
+        >
+          <h2 className="font-heading text-fluid-xl font-bold text-light tracking-tight">
+            {skills.title}
+          </h2>
+          <div className="mt-3 w-16 h-[2px] bg-accent rounded-full" />
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-muted text-base max-w-2xl mb-14"
+        >
+          {skills.description}
+        </motion.p>
+
+        {/* Categories with scatter-in pills */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="space-y-10"
+        >
+          {(skills.categories as SkillCategory[]).map((category) => (
+            <motion.div key={category.id} variants={categoryVariants}>
+              <h3 className="font-heading text-light font-semibold text-base mb-4 relative inline-block">
+                {category.title}
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-accent/40" />
+              </h3>
+              <motion.div
+                variants={containerVariants}
+                className="flex flex-wrap gap-2.5"
+              >
                 {category.skills.map((skill) => (
-                  <Badge 
-                    key={skill} 
-                    variant="secondary" 
-                    className="hover-elevate cursor-default"
-                    data-testid={`tag-skill-${skill.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                  <motion.span
+                    key={skill}
+                    variants={scatterVariant(skill)}
+                    whileHover={{ scale: 1.08, borderColor: "rgba(59,130,246,0.4)" }}
+                    className="px-3 py-1.5 text-sm border border-white/15 text-muted rounded-full hover:text-light transition-colors cursor-default"
                   >
                     {skill}
-                  </Badge>
+                  </motion.span>
                 ))}
-              </div>
-            </Card>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
-        
-        <div className="mt-12 text-center">
-          <Card className="inline-block p-6 hover-elevate" data-testid="card-learning">
-            <h4 className="font-semibold mb-2" data-testid="text-learning-title">
-              Always Learning
-            </h4>
-            <p className="text-muted-foreground max-w-lg" data-testid="text-learning-description">
-              I'm constantly exploring new technologies and frameworks. Currently diving deeper into 
-              distributed systems, cloud architecture, and advanced React patterns.
-            </p>
-          </Card>
-        </div>
+        </motion.div>
+
+        {/* Always Learning */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-14 border-t border-white/5 pt-8"
+        >
+          <h4 className="font-heading text-light font-medium text-sm mb-2">
+            {skills.learningTitle}
+          </h4>
+          <p className="text-muted/70 text-sm italic">{skills.learningDescription}</p>
+        </motion.div>
       </div>
     </section>
   );

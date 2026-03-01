@@ -1,79 +1,110 @@
-import { Card } from '@/components/ui/card';
+import { motion } from "framer-motion";
+import { highlightAmazon } from "../lib/highlightText";
+import content from "../data/portfolio-content.json";
+
+const { about } = content;
+
+const sectionVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 80, damping: 20 },
+  },
+};
 
 export default function About() {
   return (
-    <section id="about" className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-12 text-center" data-testid="text-about-title">
-          About Me
-        </h2>
-        
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <Card className="p-8 hover-elevate">
-              <h3 className="text-xl font-semibold mb-4" data-testid="text-about-subtitle">
-                Software Engineer & Student
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-6" data-testid="text-about-description">
-                I'm a Computer Science student at the University of Toronto with a 3.70 cGPA, 
-                currently working as a Returning Software Engineer Intern at StackAdapt. 
-                I specialize in full-stack development with expertise in React, TypeScript, 
-                and distributed systems.
+    <section id="about" className="py-28 md:py-36 relative overflow-hidden">
+      {/* Decorative gradient orb */}
+      <div className="absolute -right-32 top-20 w-[400px] h-[400px] bg-accent/[0.03] rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Section heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <h2 className="font-heading text-fluid-xl font-bold text-light tracking-tight">
+            {about.componentTitle}
+          </h2>
+          <div className="mt-3 w-16 h-[2px] bg-accent rounded-full" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-5 gap-12 md:gap-16">
+          {/* Left: paragraphs */}
+          <motion.div
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="md:col-span-3 space-y-6"
+          >
+            {about.summaryParagraphs.map((p, i) => (
+              <motion.p
+                key={i}
+                variants={fadeUp}
+                className="text-muted text-base leading-relaxed"
+              >
+                {highlightAmazon(p)}
+              </motion.p>
+            ))}
+          </motion.div>
+
+          {/* Right: info card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.2 }}
+            className="md:col-span-2 space-y-6"
+          >
+            {/* Current Role */}
+            <div className="border border-white/10 rounded-lg p-5">
+              <p className="text-xs uppercase tracking-widest text-muted mb-2">
+                {about.currentRoleTitle}
               </p>
-              <p className="text-muted-foreground leading-relaxed mb-6" data-testid="text-about-experience">
-                At StackAdapt, I've led the design and launch of full-stack features that 
-                directly impact 2,000+ advertisers, cutting tedious operational work and 
-                safeguarding company revenue. I'm passionate about building scalable 
-                solutions and optimizing user experiences.
+              <p className="text-light font-medium text-sm">
+                {about.currentRoleValue}
               </p>
-              <p className="text-muted-foreground leading-relaxed" data-testid="text-about-interests">
-                When I'm not coding, I enjoy exploring new technologies, contributing to 
-                open-source projects, and helping fellow students as a Teaching Assistant 
-                for Intro to Computer Science at UofT.
+            </div>
+
+            {/* Education */}
+            <div className="border border-white/10 rounded-lg p-5">
+              <p className="text-xs uppercase tracking-widest text-muted mb-2">
+                {about.educationStatusTitle}
               </p>
-            </Card>
-          </div>
-          
-          <div className="space-y-6">
-            <Card className="p-6 hover-elevate">
-              <h4 className="font-semibold mb-2" data-testid="text-current-role">
-                Current Role
-              </h4>
-              <p className="text-muted-foreground" data-testid="text-current-position">
-                Returning Software Engineer Intern at StackAdapt
+              <p className="text-light font-medium text-sm">
+                {about.educationStatusValue}
               </p>
-            </Card>
-            
-            <Card className="p-6 hover-elevate">
-              <h4 className="font-semibold mb-2" data-testid="text-education-status">
-                Education
-              </h4>
-              <p className="text-muted-foreground" data-testid="text-university">
-                Computer Science (BSc) at University of Toronto
+              <p className="text-muted text-xs mt-1">{about.educationStatusMeta}</p>
+            </div>
+
+            {/* Focus Areas */}
+            <div className="border border-white/10 rounded-lg p-5">
+              <p className="text-xs uppercase tracking-widest text-muted mb-3">
+                {about.focusAreasTitle}
               </p>
-              <p className="text-sm text-muted-foreground" data-testid="text-gpa">
-                3.70 cGPA • Dean's List • Presidents Scholarship
-              </p>
-            </Card>
-            
-            <Card className="p-6 hover-elevate">
-              <h4 className="font-semibold mb-2" data-testid="text-focus-areas">
-                Focus Areas
-              </h4>
               <div className="flex flex-wrap gap-2">
-                {['Full-Stack Development', 'Frontend Development', 'Backend Development', 
-                'Systems Development', 'Software Engineering', 'Computer Architechture', 'Scripting', 'AdTech', 'UI/UX'].map((area) => (
-                  <span 
-                    key={area} 
-                    className="px-3 py-1 bg-primary/10 text-primary rounded-md text-sm"
-                    data-testid={`tag-focus-${area.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                {about.focusAreas.map((area) => (
+                  <span
+                    key={area}
+                    className="px-3 py-1 text-xs border border-white/15 text-light/80 rounded-full"
                   >
                     {area}
                   </span>
                 ))}
               </div>
-            </Card>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

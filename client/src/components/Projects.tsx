@@ -1,193 +1,330 @@
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Github, ExternalLink } from 'lucide-react';
-import thumbmarksImg from '../assets/thumbmarks.png'
-import planetzeImg from '../assets/planetze.jpg'
-import quiztimeImg from '../assets/quiztime.png'
-import tetrisImg from '../assets/tetris.png'
-import pbsImg from '../assets/pbs.png'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiGithub, FiChevronDown } from "react-icons/fi";
+import content from "../data/portfolio-content.json";
 
-interface ProjectData {
+/* Project screenshots */
+import imgThumbmarks from "../assets/thumbmarks.png";
+import imgPapertrail from "../assets/papertrail.png";
+import imgPlanetze from "../assets/planetze.jpg";
+import imgQuiztime from "../assets/quiztime.png";
+import imgTetris from "../assets/tetris.png";
+import imgPBS from "../assets/pbs.png";
+
+const { projects } = content;
+
+interface ProjectItem {
   id: string;
   title: string;
+  summary: string;
   description: string;
   repo: string;
-  technologies: string[];
+  stack: string[];
   featured: boolean;
-  homepage?: string;
-  image?: string;
+  imageKey?: string;
 }
 
-// Static project data
-const projectsData: ProjectData[] = [
-  {
-    id: 'thumbmarks',
-    title: 'Thumbmarks',
-    description: 'Introducing Thumbmarks, the intelligent Chrome Extension that transforms how you save and revisit webpages. Instead of just bookmarking a URL, Thumbmarks captures the visual state of your page, including its precise scroll position and a screenshot, allowing you to instantly jump back to exactly where you left off, every single time.',
-    repo: 'asadbmirza/Thumbmarks',
-    technologies: ['TypeScript', 'React', 'WXT', 'Supabase', 'Chrome API'],
-    featured: true,
-    homepage: undefined,
-    image: thumbmarksImg
+const allProjects = projects.items as ProjectItem[];
+const featured = allProjects.filter((p) => p.featured);
+const other = allProjects.filter((p) => !p.featured);
+
+/* Map project IDs to imported images */
+const projectImages: Record<string, string> = {
+  thumbmarks: imgThumbmarks,
+  papertrail: imgPapertrail,
+  planetze: imgPlanetze,
+  quiztime: imgQuiztime,
+  tetris: imgTetris,
+  pokemon: imgPBS,
+};
+
+/* Unique gradient colour pairs per project (fallback) */
+const projectGradients: Record<string, [string, string]> = {
+  thumbmarks: ["#A78BFA", "#06B6D4"],
+  papertrail: ["#34D399", "#FBBF24"],
+  battleship: ["#F87171", "#FB923C"],
+  planetze: ["#4ADE80", "#2DD4BF"],
+  quiztime: ["#60A5FA", "#C084FC"],
+  tetris: ["#F472B6", "#FB7185"],
+  pokemon: ["#FBBF24", "#FB923C"],
+};
+
+function hexToRgba(hex: string, a: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+function getGradient(id: string, alpha = 0.08): string {
+  const [a, b] = projectGradients[id] ?? ["#A78BFA", "#8B5CF6"];
+  return `linear-gradient(135deg, ${hexToRgba(a, alpha)} 0%, ${hexToRgba(b, alpha)} 100%)`;
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 80, damping: 18 },
   },
-  {
-    id: 'planetze',
-    title: 'Planetze (Carbon Emissions Dashboard)', 
-    description: 'Android app in Java with CRUD operations, push notifications, and carbon footprint visualization backed by Firebase',
-    repo: 'asadbmirza/Planetze-Mobile-Application',
-    technologies: ['Java', 'Android Studio', 'Firebase'],
-    featured: true,
-    homepage: undefined,
-    image: planetzeImg
-  },
-  {
-    id: 'flashcard',
-    title: 'Quiztime: Flashcard Learning System',
-    description: 'Interactive flashcard application for efficient learning with spaced repetition algorithms and progress tracking',
-    repo: 'RishiJain905/flashcard-project',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Express'],
-    featured: true,
-    homepage: undefined,
-    image: quiztimeImg
-  },
-  {
-    id: 'tetris',
-    title: 'Tetris Assembly',
-    description: 'Classic Tetris game implemented in x86 Assembly language, showcasing low-level programming skills and game logic',
-    repo: 'asadbmirza/tetris-assembly',
-    technologies: ['Assembly', 'x86', 'Game Development'],
-    featured: false,
-    homepage: undefined,
-    image: tetrisImg
-  },
-  {
-    id: 'battleship',
-    title: 'Multiplayer Online Asynchronous Battleship',
-    description: 'Scalable multiplayer Battleship server in C using epoll for I/O multiplexing and signal handling for concurrent connections',
-    repo: 'asadbmirza/Multiplayer-Online-Asynchronous-Battleship',
-    technologies: ['C', 'Networking', 'Concurrency', 'System Programming'],
-    featured: true,
-    homepage: undefined
-  },
-  {
-    id: 'pokemon',
-    title: 'Pokemon Battle Simulator',
-    description: 'Turn-based Pokemon battle simulation with accurate battle mechanics, type effectiveness, and move calculations',
-    repo: 'asadbmirza/Pokemon-Battle-Simulator',
-    technologies: ['Java', 'Game Logic', 'OOP'],
-    featured: false,
-    homepage: undefined,
-    image: pbsImg
-  }
-];
+};
 
 export default function Projects() {
-
-  const featuredProjects = projectsData.filter(p => p.featured);
-  const otherProjects = projectsData.filter(p => !p.featured);
-
-  const ProjectCard = ({ project, isLarge = false }: { project: ProjectData, isLarge?: boolean }) => {
-    return (
-      <Card 
-        className={`p-6 hover-elevate h-full flex flex-col ${isLarge ? 'md:col-span-2' : ''}`}
-        data-testid={`card-project-${project.id}`}
-      >
-        {project.image && (
-          <div className="mb-4 overflow-hidden rounded-md">
-            <img 
-              src={project.image} 
-              alt={`${project.title} preview`}
-              className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-              data-testid={`img-project-${project.id}`}
-            />
-          </div>
-        )}
-        
-        <h3 className={`font-semibold ${isLarge ? 'text-xl' : 'text-lg'} mb-4`} data-testid={`text-project-title-${project.id}`}>
-          {project.title}
-        </h3>
-        
-        <p className="text-muted-foreground mb-6 flex-grow" data-testid={`text-project-description-${project.id}`}>
-          {project.description}
-        </p>
-        
-        <div className="flex flex-wrap gap-2 mb-6" data-testid={`tags-technologies-${project.id}`}>
-          {project.technologies.map((tech) => (
-            <Badge key={tech} variant="secondary" className="text-xs">
-              {tech}
-            </Badge>
-          ))}
-        </div>
-        
-        <div className="flex gap-3 mt-auto">
-          <Button
-            variant="outline"
-            size="sm"
-            className="gap-2 flex-1"
-            onClick={() => {
-              window.open(`https://github.com/${project.repo}`, '_blank');
-              console.log(`Opening GitHub repo: ${project.repo}`);
-            }}
-            data-testid={`button-github-${project.id}`}
-          >
-            <Github className="w-4 h-4" />
-            Code
-          </Button>
-          {project.homepage && (
-            <Button
-              size="sm"
-              className="gap-2 flex-1"
-              onClick={() => {
-                window.open(project.homepage, '_blank');
-                console.log(`Opening demo: ${project.homepage}`);
-              }}
-              data-testid={`button-demo-${project.id}`}
-            >
-              <ExternalLink className="w-4 h-4" />
-              Demo
-            </Button>
-          )}
-        </div>
-      </Card>
-    );
-  };
-
+  const [showOther, setShowOther] = useState(true);
+  const heroProject = featured[0];
+  const gridProjects = featured.slice(1);
 
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-4 text-center" data-testid="text-projects-title">
-          Featured Projects
-        </h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto" data-testid="text-projects-description">
-          A collection of projects showcasing my skills in full-stack development, 
-          system programming, and problem-solving across various technologies.
-        </p>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              isLarge={index === 0}
+        {/* Section heading */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 80, damping: 20 }}
+          className="mb-6"
+        >
+          <h2 className="font-heading text-fluid-xl font-bold text-light tracking-tight">
+            {projects.featuredTitle}
+          </h2>
+          <div className="mt-3 w-16 h-[2px] bg-accent rounded-full" />
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-muted text-base max-w-2xl mb-14"
+        >
+          {projects.featuredDescription}
+        </motion.p>
+
+        {/* Hero project — full width with screenshot */}
+        {heroProject && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ type: "spring", stiffness: 80, damping: 18 }}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            className="group border border-white/10 hover:border-accent/30 rounded-lg overflow-hidden transition-all duration-300 mb-5 hover:shadow-lg hover:shadow-accent/5"
+          >
+            {/* Gradient strip */}
+            <div
+              className="h-1.5 w-full"
+              style={{ background: getGradient(heroProject.id, 0.5) }}
             />
-          ))}
-        </div>
-        
-        {otherProjects.length > 0 && (
-          <>
-            <h3 className="text-2xl font-semibold mb-8 text-center" data-testid="text-other-projects-title">
-              Other Projects
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {otherProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+
+            <div className="p-6 md:p-8 grid md:grid-cols-5 gap-6">
+              {/* Screenshot / gradient visual */}
+              <ProjectVisual project={heroProject} className="md:col-span-2 h-40 md:h-full min-h-[140px]" />
+
+              {/* Content */}
+              <div className="md:col-span-3">
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="font-heading text-light font-semibold text-xl group-hover:text-accent transition-colors">
+                    {heroProject.title}
+                  </h3>
+                  <a
+                    href={heroProject.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-accent transition-colors shrink-0 ml-3"
+                  >
+                    <FiGithub size={20} />
+                  </a>
+                </div>
+                <p className="text-muted text-sm leading-relaxed mb-2">
+                  {heroProject.summary}
+                </p>
+                <p className="text-muted/60 text-xs leading-relaxed mb-4">
+                  {heroProject.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {heroProject.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-0.5 text-[11px] border border-white/10 text-muted rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-          </>
+          </motion.div>
+        )}
+
+        {/* Remaining featured — 2x2 grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ staggerChildren: 0.08 }}
+          className="grid md:grid-cols-2 gap-5"
+        >
+          {gridProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </motion.div>
+
+        {/* Other projects */}
+        {other.length > 0 && (
+          <div className="mt-16">
+            <button
+              onClick={() => setShowOther(!showOther)}
+              className="flex items-center gap-2 text-muted hover:text-light transition-colors text-sm font-medium group"
+            >
+              <span>{projects.otherTitle}</span>
+              <motion.span
+                animate={{ rotate: showOther ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FiChevronDown size={16} />
+              </motion.span>
+            </button>
+
+            <AnimatePresence>
+              {showOther && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="overflow-hidden"
+                >
+                  <div className="grid md:grid-cols-2 gap-5 mt-6">
+                    {other.map((project) => (
+                      <ProjectCard key={project.id} project={project} />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         )}
       </div>
     </section>
+  );
+}
+
+/* Shared image/gradient visual block */
+function ProjectVisual({
+  project,
+  className = "",
+}: {
+  project: ProjectItem;
+  className?: string;
+}) {
+  const img = projectImages[project.id];
+
+  return (
+    <div
+      className={`rounded-lg relative overflow-hidden ${className}`}
+      style={{ background: getGradient(project.id, 0.12) }}
+    >
+      {img ? (
+        <img
+          src={img}
+          alt={`${project.title} screenshot`}
+          className="absolute inset-0 w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+        />
+      ) : (
+        /* Dot grid fallback for projects without images */
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, currentColor 1px, transparent 1px)",
+            backgroundSize: "16px 16px",
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function ProjectCard({ project }: { project: ProjectItem }) {
+  const [hovered, setHovered] = useState(false);
+  const hasImage = !!projectImages[project.id];
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group border border-white/10 hover:border-accent/30 rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
+    >
+      {/* Screenshot thumbnail or gradient strip */}
+      {hasImage ? (
+        <div
+          className="h-36 w-full relative overflow-hidden"
+          style={{ background: getGradient(project.id, 0.12) }}
+        >
+          <img
+            src={projectImages[project.id]}
+            alt={`${project.title} screenshot`}
+            className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+          />
+        </div>
+      ) : (
+        <div
+          className="h-1 w-full"
+          style={{ background: getGradient(project.id, 0.5) }}
+        />
+      )}
+
+      <div className="p-6">
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="font-heading text-light font-semibold text-lg group-hover:text-accent transition-colors">
+            {project.title}
+          </h3>
+          <a
+            href={project.repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted hover:text-accent transition-colors shrink-0 ml-3"
+            aria-label={`View ${project.title} on GitHub`}
+          >
+            <FiGithub size={18} />
+          </a>
+        </div>
+
+        <p className="text-muted text-sm leading-relaxed mb-4">
+          {project.summary}
+        </p>
+
+        {/* Description revealed on hover */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.p
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="text-muted/60 text-xs leading-relaxed mb-4 overflow-hidden"
+            >
+              {project.description}
+            </motion.p>
+          )}
+        </AnimatePresence>
+
+        <div className="flex flex-wrap gap-2">
+          {project.stack.map((tech) => (
+            <span
+              key={tech}
+              className="px-2.5 py-0.5 text-[11px] border border-white/10 text-muted rounded-full"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }

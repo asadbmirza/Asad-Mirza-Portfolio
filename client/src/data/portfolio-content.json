@@ -1,0 +1,325 @@
+{
+  "profile": {
+    "name": "Asad Mirza",
+    "brand": "Asad.M",
+    "username": "asad.mirza",
+    "location": "Toronto",
+    "phone": "905-244-5490",
+    "email": "asadbmirza.05@gmail.com",
+    "links": {
+      "linkedin": "https://linkedin.com/in/asadbmirza",
+      "github": "https://github.com/asadbmirza",
+      "resume": "https://drive.google.com/drive/folders/1-2zHdZil_2alXBk0OXFyBjzLqMRty9Jr?usp=sharing"
+    },
+    "heroRoles": [
+      "Software Engineer",
+      "Full-Stack Developer",
+      "Computer Science Student",
+      "Problem Solver"
+    ],
+    "heroCallout": "Incoming Amazon SDE Intern - Summer 2026",
+    "heroSummary": "Software engineer building full-stack systems, analytics workflows, and reliable developer tooling with strong product impact.",
+    "heroDescription": "Currently a Returning Software Engineer Intern at StackAdapt, building scalable measurement solutions for 3,000+ advertisers. Computer Science student and Teaching Assistant at the University of Toronto with a passion for systems and full-stack development."
+  },
+  "navigation": {
+    "portfolio": [
+      { "id": "home", "label": "Home" },
+      { "id": "about", "label": "About" },
+      { "id": "experience", "label": "Experience" },
+      { "id": "projects", "label": "Projects" },
+      { "id": "contact", "label": "Contact" }
+    ],
+    "full": [
+      { "id": "home", "label": "Home" },
+      { "id": "about", "label": "About" },
+      { "id": "experience", "label": "Experience" },
+      { "id": "projects", "label": "Projects" },
+      { "id": "skills", "label": "Skills" },
+      { "id": "education", "label": "Education" },
+      { "id": "contact", "label": "Contact" }
+    ]
+  },
+  "about": {
+    "title": "About",
+    "componentTitle": "About Me",
+    "cardSubtitle": "Software Engineer and Student",
+    "summaryParagraphs": [
+      "I am Asad, a third-year Computer Science student at the University of Toronto specializing in Software Engineering. I recently completed my second Software Engineer internship at StackAdapt on the Measurements team, where I delivered over one-third of the end-to-end development for the first Cross-Channel Attribution product, projected to drive around $100M in advertiser spend this year. Across both terms, I worked primarily with React and TypeScript on the frontend, Ruby on Rails on the backend, and GraphQL.",
+      "During my first term at StackAdapt, I led the launch of a full-stack deletion pipeline that removed 95% of repetitive on-call work and built features for political clients that unlocked over $5M in business opportunities. Beyond internships, I have served as a Computer Science Teaching Assistant for more than 600 students, helping them build strong Python and CS fundamentals, and I also worked as a Research Associate in CS education where I co-authored and submitted work to SIGCSE 2025.",
+      "I am also an incoming Amazon Software Development Engineer Intern for Summer 2026."
+    ],
+    "currentRoleTitle": "Current Role",
+    "currentRoleValue": "Returning Software Engineer Intern at StackAdapt",
+    "educationStatusTitle": "Education",
+    "educationStatusValue": "Computer Science (BSc) at University of Toronto",
+    "educationStatusMeta": "3.70 cGPA | Dean's List | Presidents Scholarship",
+    "focusAreasTitle": "Focus Areas",
+    "focusAreas": [
+      "Full-Stack Development",
+      "Frontend Development",
+      "Backend Development",
+      "Systems Development",
+      "Software Engineering",
+      "Computer Architecture",
+      "Scripting",
+      "AdTech",
+      "UI/UX"
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "id": "amazon-incoming",
+        "role": "Incoming Software Development Engineer Intern",
+        "company": "Amazon",
+        "team": "",
+        "location": "Summer 2026",
+        "period": "May 2026 - August 2026",
+        "bullets": [
+          "Joining Amazon as an incoming Software Development Engineer Intern for Summer 2026."
+        ],
+        "technologies": []
+      },
+      {
+        "id": "stackadapt-returning",
+        "role": "Returning Software Engineer Intern",
+        "company": "StackAdapt",
+        "team": "Measurements Team",
+        "location": "Toronto, ON",
+        "period": "September 2025 - December 2025",
+        "bullets": [
+          "Delivered over one-third of the end-to-end development of StackAdapt's first CCA product, enabling multi-channel performance measurement and attribution; projected to generate $100M+ in revenue.",
+          "Rebuilt CCA's data pipeline and GraphQL schema to deliver normalized attribution metrics while maintaining sub-5-second latency for large queries.",
+          "Built reusable React hooks and components for CCA's study management UI, including dynamic forms, tables, and charts with full CRUD workflows, pagination, and React Query synchronization."
+        ],
+        "technologies": ["React", "TypeScript", "Ruby on Rails", "GraphQL", "React Query"]
+      },
+      {
+        "id": "stackadapt-intern",
+        "role": "Software Engineer Intern",
+        "company": "StackAdapt",
+        "team": "Measurements Team",
+        "location": "Toronto, ON",
+        "period": "January 2025 - April 2025",
+        "bullets": [
+          "Engineered a full-stack component supporting a new Canadian Provincial District metric for Ontario political clients, enabling over $5M in business opportunities through improved campaign insights.",
+          "Led the end-to-end design and launch of a full-stack deletion pipeline, cutting 95% of repetitive on-call work and preventing unintended charges for 3,000+ advertisers.",
+          "Wrote requirements-driven black-box RSpec and Jest suites for every feature shipped, keeping code above 90% coverage and catching multiple pre-merge regressions."
+        ],
+        "technologies": ["React", "TypeScript", "Ruby on Rails", "GraphQL", "React Query", "RSpec", "Jest"]
+      },
+      {
+        "id": "saige",
+        "role": "Software Developer Intern",
+        "company": "Saige",
+        "team": "",
+        "location": "Remote",
+        "period": "November 2024 - January 2025",
+        "bullets": [
+          "Developed new search and optimized web scraping features for a real estate analytics platform, leading to a 27% higher client conversion rate.",
+          "Optimized real estate data pipeline code by developing a VPN switcher on AWS EC2 that increased throughput by 500% to deliver fresher metrics."
+        ],
+        "technologies": ["React", "Python", "Flask", "MySQL", "AWS EC2"]
+      },
+      {
+        "id": "uoft-ta",
+        "role": "Teaching Assistant - Intro to Computer Science I",
+        "company": "University of Toronto",
+        "team": "Computer Science Department",
+        "location": "Toronto, ON",
+        "period": "September 2024 - Present",
+        "bullets": [
+          "Selected by Professor Gawde from 200+ applicants to help teach 600+ first-year students Python and CS fundamentals.",
+          "Led office hours and assignment support sessions, resulting in multiple student requests for personal office hours."
+        ],
+        "technologies": ["Python", "Teaching", "Mentorship"]
+      },
+      {
+        "id": "riipen-servicenext",
+        "role": "Frontend Developer",
+        "company": "Riipen | ServiceNext",
+        "team": "Service Professional Marketplace",
+        "location": "Remote",
+        "period": "July 2024 - September 2024",
+        "bullets": [
+          "Developed responsive React components from Figma designs for a service professional marketplace.",
+          "Led form and scheduling flows and earned a $1,400 Riipen project award."
+        ],
+        "technologies": ["React", "React Bootstrap", "JavaScript", "Formik", "Yup", "Axios"]
+      },
+      {
+        "id": "uoft-research",
+        "role": "Research Associate",
+        "company": "University of Toronto",
+        "team": "Professor Brian Harrington",
+        "location": "Remote",
+        "period": "March 2024 - January 2025",
+        "bullets": [
+          "Co-authored and submitted \"A Systematic Literature Mapping of Early Generative AI Research in CS Education\" to SIGCSE 2025.",
+          "Conducted comprehensive analysis of LLM applications in computer science pedagogy and presented findings at academic seminars."
+        ],
+        "technologies": ["Research", "Academic Writing", "Data Analysis"]
+      }
+    ]
+  },
+  "projects": {
+    "featuredTitle": "Featured Projects",
+    "featuredDescription": "A collection of projects showcasing my skills in full-stack development, system programming, and problem-solving across various technologies.",
+    "libraryTitle": "Project Library",
+    "otherTitle": "Other Projects",
+    "items": [
+      {
+        "id": "thumbmarks",
+        "title": "Thumbmarks",
+        "summary": "Chrome extension for visual bookmarking with exact scroll restore.",
+        "description": "Engineered a full-stack Chrome extension to solve a personal pain point in web browsing, building a visual bookmarking system on WXT and React with a Supabase backend, and securing user data via Row-Level Security.",
+        "repo": "https://github.com/asadbmirza/Thumbmarks",
+        "stack": ["React", "WXT", "Supabase", "Chrome API"],
+        "featured": true,
+        "imageKey": "thumbmarks"
+      },
+      {
+        "id": "papertrail",
+        "title": "PaperTrail: AI Powered Receipt Dashboard",
+        "summary": "AI receipt dashboard with Gmail ingestion and OCR extraction.",
+        "description": "Built a full-stack fintech platform automating receipt management via Gmail API integration, Gemini 2.5 Flash OCR, and a Supabase backend, organizing expense data into interactive analytics dashboards.",
+        "repo": "https://github.com/moibra05/papertrail/tree/main",
+        "stack": ["Next.js", "React", "Gemini", "Supabase", "Gmail API"],
+        "featured": true
+      },
+      {
+        "id": "battleship",
+        "title": "Multiplayer Online Asynchronous Battleship",
+        "summary": "Concurrent multiplayer C server using epoll and signal handling.",
+        "description": "Built a scalable multiplayer Battleship server in C using epoll for I/O multiplexing and signal handling for concurrent connections.",
+        "repo": "https://github.com/asadbmirza/Multiplayer-Online-Asynchronous-Battleship",
+        "stack": ["C", "epoll", "Networking", "Systems"],
+        "featured": true
+      },
+      {
+        "id": "planetze",
+        "title": "Planetze",
+        "summary": "Android emissions dashboard with Firebase-backed CRUD and notifications.",
+        "description": "Android app in Java with CRUD operations, push notifications, and carbon footprint visualization backed by Firebase.",
+        "repo": "https://github.com/asadbmirza/Planetze-Mobile-Application",
+        "stack": ["Java", "Android", "Firebase"],
+        "featured": true,
+        "imageKey": "planetze"
+      },
+      {
+        "id": "quiztime",
+        "title": "Quiztime",
+        "summary": "Flashcard learning app with repetition and progress tracking.",
+        "description": "Interactive flashcard application for efficient learning with spaced repetition algorithms and progress tracking.",
+        "repo": "https://github.com/RishiJain905/flashcard-project",
+        "stack": ["React", "Express", "PostgreSQL"],
+        "featured": true,
+        "imageKey": "quiztime"
+      },
+      {
+        "id": "tetris",
+        "title": "Tetris Assembly",
+        "summary": "Classic Tetris implemented in x86 assembly with low-level control.",
+        "description": "Classic Tetris game implemented in x86 Assembly language, showcasing low-level programming skills and game logic.",
+        "repo": "https://github.com/asadbmirza/tetris-assembly",
+        "stack": ["Assembly", "x86", "Game Development"],
+        "featured": false,
+        "imageKey": "tetris"
+      },
+      {
+        "id": "pokemon",
+        "title": "Pokemon Battle Simulator",
+        "summary": "Turn-based battle simulator implementing accurate combat logic.",
+        "description": "Turn-based Pokemon battle simulation with accurate battle mechanics, type effectiveness, and move calculations.",
+        "repo": "https://github.com/asadbmirza/Pokemon-Battle-Simulator",
+        "stack": ["Java", "OOP", "Game Logic"],
+        "featured": false,
+        "imageKey": "pokemon"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "description": "A comprehensive toolkit developed through hands-on experience in software engineering, academic coursework, and personal projects.",
+    "categories": [
+      {
+        "id": "programming",
+        "title": "Programming Languages",
+        "skills": ["JavaScript", "TypeScript", "Python", "Java", "C", "SQL", "Ruby", "HTML", "CSS", "Bash"]
+      },
+      {
+        "id": "frameworks",
+        "title": "Frameworks and Libraries",
+        "skills": ["React", "Node.js", "Express", "Flask", "Spring Boot", "Ruby on Rails", "GraphQL", "React Query", "MUI", "WXT", "Chrome API"]
+      },
+      {
+        "id": "tools",
+        "title": "Developer Tools and Testing",
+        "skills": ["RSpec", "Jest", "Pytest", "Git", "Linux", "Jira", "Docker", "AWS EC2", "CI/CD", "Data Pipelines"]
+      },
+      {
+        "id": "practices",
+        "title": "Practices and Concepts",
+        "skills": ["Object Oriented Design", "REST", "SOLID", "Agile/Scrum", "Distributed Computing", "Networking Fundamentals (TCP)", "AdTech"]
+      }
+    ],
+    "learningTitle": "Always Learning",
+    "learningDescription": "I am constantly exploring new technologies and frameworks."
+  },
+  "education": {
+    "title": "Education",
+    "degree": "Computer Science (BSc)",
+    "period": "2023 - 2027",
+    "university": "University of Toronto, Toronto, ON",
+    "gpa": "3.70 cGPA",
+    "awards": [
+      "Dean's List",
+      "Presidents Scholarship Award ($7,500)",
+      "Academic Excellence Recognition"
+    ],
+    "courseCategories": [
+      {
+        "category": "Core Computer Science",
+        "courses": ["Software Design", "Systems Programming", "Computer Organization", "Data Structures and Algorithms", "Web Development"]
+      },
+      {
+        "category": "Mathematics",
+        "courses": ["Linear Algebra I-II", "Calculus I-III"]
+      }
+    ],
+    "description": "Comprehensive Computer Science education with focus on software engineering principles, systems programming, and mathematical foundations while gaining practical experience through internships, teaching, and research."
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "I am always interested in discussing new opportunities, collaborations, or just connecting with fellow developers. Feel free to reach out through any of these channels.",
+    "methods": [
+      {
+        "id": "email",
+        "label": "Email",
+        "value": "asadbmirza.05@gmail.com",
+        "href": "mailto:asadbmirza.05@gmail.com",
+        "description": "Best way to reach me for opportunities"
+      },
+      {
+        "id": "github",
+        "label": "GitHub",
+        "value": "github.com/asadbmirza",
+        "href": "https://github.com/asadbmirza",
+        "description": "Check out my latest projects and contributions"
+      },
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/asadbmirza",
+        "href": "https://linkedin.com/in/asadbmirza",
+        "description": "Connect with me professionally"
+      }
+    ],
+    "locationTitle": "Based in Toronto",
+    "locationDescription": "Currently studying at the University of Toronto and open to opportunities in the Greater Toronto Area and remote positions.",
+    "primaryButtonLabel": "Send Email",
+    "secondaryButtonLabel": "View GitHub",
+    "sectionTitle": "Contact"
+  }
+}

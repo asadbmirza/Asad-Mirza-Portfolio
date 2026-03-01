@@ -1,28 +1,29 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import Portfolio from "@/pages/Portfolio";
-import NotFound from "@/pages/not-found";
+import Navigation from "./components/Navigation";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Education from "./components/Education";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
-function AppRouter() {
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Portfolio />} />
-      {/* Fallback to 404 */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <div className="min-h-screen bg-dark text-light">
+      <Navigation />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollToTop />
+    </div>
   );
 }
-
-function App() {
-  return (
-    <TooltipProvider>
-      <Toaster />
-      <HashRouter>
-        <AppRouter />
-      </HashRouter>
-    </TooltipProvider>
-  );
-}
-
-export default App;
