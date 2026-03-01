@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-28 md:py-36 relative">
+    <section id="contact" className="py-28 md:py-36 relative overflow-hidden">
       {/* Subtle radial background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent/[0.04] rounded-full blur-[100px]" />

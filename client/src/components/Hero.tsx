@@ -85,7 +85,7 @@ export default function Hero() {
 
       {/* Breathing ambient glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(600px,100vw)] h-[min(600px,100vh)] rounded-full pointer-events-none"
         style={{
           background:
             "radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 70%)",
@@ -96,7 +96,7 @@ export default function Hero() {
 
       {/* Drifting dot grid */}
       <div
-        className="absolute inset-[-50px] pointer-events-none opacity-[0.04] animate-drift"
+        className="absolute inset-0 pointer-events-none opacity-[0.04] animate-drift"
         style={{
           backgroundImage:
             "radial-gradient(circle, #e5e5e5 1px, transparent 1px)",

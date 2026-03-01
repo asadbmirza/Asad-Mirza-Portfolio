@@ -66,7 +66,7 @@ export default function Navigation() {
           </motion.button>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map(({ id, label }) => (
               <button
                 key={id}
@@ -100,7 +100,7 @@ export default function Navigation() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-light p-2 hover:text-accent transition-colors"
+            className="lg:hidden flex items-center justify-center w-10 h-10 text-light hover:text-accent transition-colors shrink-0"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <FiX size={22} /> : <FiMenu size={22} />}
@@ -116,7 +116,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-dark/95 backdrop-blur-xl lg:hidden flex flex-col items-center justify-center"
           >
             <nav className="flex flex-col items-center gap-6">
               {navLinks.map(({ id, label }, i) => (
