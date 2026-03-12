@@ -34,5 +34,5 @@ export default defineConfig({
       deny: ["**/.*"],
     },
   },
-  base: '/Asad-Mirza-Portfolio/',
+  base: "/",
 });

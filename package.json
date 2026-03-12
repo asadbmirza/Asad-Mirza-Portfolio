@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://asadbmirza.github.io/Asad-Mirza-Portfolio",
+  "homepage": "https://asadbmirza.me",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
