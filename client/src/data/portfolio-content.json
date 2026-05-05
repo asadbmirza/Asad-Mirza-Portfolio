@@ -44,7 +44,7 @@
     "componentTitle": "About Me",
     "cardSubtitle": "Software Engineer and Student",
     "summaryParagraphs": [
-      "I am Asad, a third-year Computer Science student at the University of Toronto specializing in Software Engineering. I recently completed my second Software Engineer internship at StackAdapt on the Measurements team, where I delivered over one-third of the end-to-end development for the first Cross-Channel Attribution product, projected to drive around $100M in advertiser spend this year. Across both terms, I worked primarily with React and TypeScript on the frontend, Ruby on Rails on the backend, and GraphQL.",
+      "I am Asad, a third-year Computer Science student at the University of Toronto specializing in Software Engineering. I recently completed my second Software Engineer internship at StackAdapt on the Measurements team, where I delivered over one-third of the end-to-end development for the first Cross-Channel Attribution product, projected to drive around $100M in advertiser campaign spend this year. Across both terms, I worked primarily with React and TypeScript on the frontend, Ruby on Rails on the backend, and GraphQL.",
       "During my first term at StackAdapt, I led the launch of a full-stack deletion pipeline that removed 95% of repetitive on-call work and built features for political clients that unlocked over $5M in business opportunities. Beyond internships, I have served as a Computer Science Teaching Assistant for more than 600 students, helping them build strong Python and CS fundamentals, and I also worked as a Research Associate in CS education where I co-authored and submitted work to SIGCSE 2025.",
       "I am also an incoming Amazon Software Development Engineer Intern for Summer 2026."
     ],
@@ -89,7 +89,7 @@
         "location": "Toronto, ON",
         "period": "September 2025 - December 2025",
         "bullets": [
-          "Delivered over one-third of the end-to-end development of StackAdapt's first CCA product, enabling multi-channel performance measurement and attribution; projected to generate $100M+ in revenue.",
+          "Delivered over one-third of the end-to-end development of StackAdapt's first CCA product, enabling multi-channel performance measurement and attribution; projected to generate $100M+ in advertiser campaign spend.",
           "Rebuilt CCA's data pipeline and GraphQL schema to deliver normalized attribution metrics while maintaining sub-5-second latency for large queries.",
           "Built reusable React hooks and components for CCA's study management UI, including dynamic forms, tables, and charts with full CRUD workflows, pagination, and React Query synchronization."
         ],
