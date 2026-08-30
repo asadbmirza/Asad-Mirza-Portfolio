@@ -17,9 +17,9 @@
       "Computer Science Student",
       "Problem Solver"
     ],
-    "heroCallout": "Incoming Amazon SDE Intern - Summer 2026",
+    "heroCallout": "Former Amazon SDE Intern",
     "heroSummary": "Software engineer building full-stack systems, analytics workflows, and reliable developer tooling with strong product impact.",
-    "heroDescription": "Currently a Returning Software Engineer Intern at StackAdapt, building scalable measurement solutions for 3,000+ advertisers. Computer Science student and Teaching Assistant at the University of Toronto with a passion for systems and full-stack development."
+    "heroDescription": "Former Amazon Software Development Engineer Intern, where I built an LLM agent that streamlined Amazon Books navigation updates. Computer Science student and Teaching Assistant at the University of Toronto with a passion for systems and full-stack development."
   },
   "navigation": {
     "portfolio": [
@@ -44,15 +44,15 @@
     "componentTitle": "About Me",
     "cardSubtitle": "Software Engineer and Student",
     "summaryParagraphs": [
-      "I am Asad, a third-year Computer Science student at the University of Toronto specializing in Software Engineering. I recently completed my second Software Engineer internship at StackAdapt on the Measurements team, where I delivered over one-third of the end-to-end development for the first Cross-Channel Attribution product, projected to drive around $100M in advertiser campaign spend this year. Across both terms, I worked primarily with React and TypeScript on the frontend, Ruby on Rails on the backend, and GraphQL.",
-      "During my first term at StackAdapt, I led the launch of a full-stack deletion pipeline that removed 95% of repetitive on-call work and built features for political clients that unlocked over $5M in business opportunities. Beyond internships, I have served as a Computer Science Teaching Assistant for more than 600 students, helping them build strong Python and CS fundamentals, and I also worked as a Research Associate in CS education where I co-authored and submitted work to SIGCSE 2025.",
-      "I am also an incoming Amazon Software Development Engineer Intern for Summer 2026."
+      "I am Asad, a Computer Science student at the University of Toronto specializing in Software Engineering. I recently completed a Software Development Engineer internship at Amazon, where I architected and developed an LLM agent that automated Amazon Books navigation configuration updates, saving an estimated 60+ developer-hours each month.",
+      "Previously, across two terms on StackAdapt's Measurements team, I delivered over one-third of the end-to-end development for its first Cross-Channel Attribution product, projected to generate $100M+ in revenue. I worked primarily with React and TypeScript on the frontend, Ruby on Rails on the backend, and GraphQL.",
+      "Beyond internships, I have served as a Computer Science Teaching Assistant for more than 600 students, helping them build strong Python and CS fundamentals, and I co-authored research on generative AI in CS education submitted to SIGCSE 2025."
     ],
-    "currentRoleTitle": "Current Role",
-    "currentRoleValue": "Returning Software Engineer Intern at StackAdapt",
+    "currentRoleTitle": "Most Recent Role",
+    "currentRoleValue": "Software Development Engineer Intern at Amazon",
     "educationStatusTitle": "Education",
     "educationStatusValue": "Computer Science (BSc) at University of Toronto",
-    "educationStatusMeta": "3.70 cGPA | Dean's List | Presidents Scholarship",
+    "educationStatusMeta": "3.67 cGPA | Dean's List | President's Scholarship",
     "focusAreasTitle": "Focus Areas",
     "focusAreas": [
       "Full-Stack Development",
@@ -70,16 +70,18 @@
     "title": "Experience",
     "items": [
       {
-        "id": "amazon-incoming",
-        "role": "Incoming Software Development Engineer Intern",
+        "id": "amazon",
+        "role": "Software Development Engineer Intern",
         "company": "Amazon",
         "team": "",
-        "location": "Summer 2026",
-        "period": "May 2026 - August 2026",
+        "location": "Toronto, ON",
+        "period": "June 2026 - August 2026",
         "bullets": [
-          "Joining Amazon as an incoming Software Development Engineer Intern for Summer 2026."
+          "Architected and developed an LLM agent automating navigation configuration updates for Amazon Books, cutting end-to-end update time by 1+ hour per change and saving 60+ developer-hours per month (estimated 0.25–0.5 headcount).",
+          "Designed a self-serve chat service on AWS using Fargate, Bedrock, and DynamoDB; a compute cost analysis across EC2, Fargate, and Lambda identified a per-session design roughly 78x cheaper than always-on hosting.",
+          "Engineered and integrated MCP servers, root-causing and fixing a blocking partner-team server failure and consolidating scattered validation rules into its API write path."
         ],
-        "technologies": []
+        "technologies": ["TypeScript", "MCP", "AWS Fargate", "Amazon Bedrock", "DynamoDB"]
       },
       {
         "id": "stackadapt-returning",
@@ -89,8 +91,8 @@
         "location": "Toronto, ON",
         "period": "September 2025 - December 2025",
         "bullets": [
-          "Delivered over one-third of the end-to-end development of StackAdapt's first CCA product, enabling multi-channel performance measurement and attribution; projected to generate $100M+ in advertiser campaign spend.",
-          "Rebuilt CCA's data pipeline and GraphQL schema to deliver normalized attribution metrics while maintaining sub-5-second latency for large queries.",
+          "Delivered over one-third of the end-to-end development of StackAdapt's first CCA product, enabling multi-channel performance measurement and attribution; projected to generate $100M+ in revenue.",
+          "Rebuilt CCA's data pipeline and GraphQL schema to deliver normalized attribution metrics, bridging backend measurement logic with advertiser-facing visualizations while maintaining under 5-second latency for large queries.",
           "Built reusable React hooks and components for CCA's study management UI, including dynamic forms, tables, and charts with full CRUD workflows, pagination, and React Query synchronization."
         ],
         "technologies": ["React", "TypeScript", "Ruby on Rails", "GraphQL", "React Query"]
@@ -104,8 +106,7 @@
         "period": "January 2025 - April 2025",
         "bullets": [
           "Engineered a full-stack component supporting a new Canadian Provincial District metric for Ontario political clients, enabling over $5M in business opportunities through improved campaign insights.",
-          "Led the end-to-end design and launch of a full-stack deletion pipeline, cutting 95% of repetitive on-call work and preventing unintended charges for 3,000+ advertisers.",
-          "Wrote requirements-driven black-box RSpec and Jest suites for every feature shipped, keeping code above 90% coverage and catching multiple pre-merge regressions."
+          "Led the end-to-end design and launch of a full-stack deletion pipeline, cutting 95% of repetitive on-call work and preventing unintended charges for 3,000+ advertisers, directly safeguarding company revenue."
         ],
         "technologies": ["React", "TypeScript", "Ruby on Rails", "GraphQL", "React Query", "RSpec", "Jest"]
       },
@@ -134,19 +135,6 @@
           "Led office hours and assignment support sessions, resulting in multiple student requests for personal office hours."
         ],
         "technologies": ["Python", "Teaching", "Mentorship"]
-      },
-      {
-        "id": "riipen-servicenext",
-        "role": "Frontend Developer",
-        "company": "Riipen | ServiceNext",
-        "team": "Service Professional Marketplace",
-        "location": "Remote",
-        "period": "July 2024 - September 2024",
-        "bullets": [
-          "Developed responsive React components from Figma designs for a service professional marketplace.",
-          "Led form and scheduling flows and earned a $1,400 Riipen project award."
-        ],
-        "technologies": ["React", "React Bootstrap", "JavaScript", "Formik", "Yup", "Axios"]
       },
       {
         "id": "uoft-research",
@@ -256,12 +244,12 @@
       {
         "id": "tools",
         "title": "Developer Tools and Testing",
-        "skills": ["RSpec", "Jest", "Pytest", "Git", "Linux", "Jira", "Docker", "AWS EC2", "CI/CD", "Data Pipelines"]
+        "skills": ["RSpec", "Jest", "Pytest", "Git", "Linux", "Docker", "AWS EC2", "AWS Fargate", "DynamoDB", "Amazon Bedrock", "CI/CD", "Data Pipelines"]
       },
       {
         "id": "practices",
         "title": "Practices and Concepts",
-        "skills": ["Object Oriented Design", "REST", "SOLID", "Agile/Scrum", "Distributed Computing", "Networking Fundamentals (TCP)", "AdTech"]
+        "skills": ["Object Oriented Design", "REST", "SOLID", "Agile/Scrum", "Distributed Computing", "Networking Fundamentals (TCP)", "AdTech", "Model Context Protocol (MCP)"]
       }
     ],
     "learningTitle": "Always Learning",
@@ -270,13 +258,12 @@
   "education": {
     "title": "Education",
     "degree": "Computer Science (BSc)",
-    "period": "2023 - 2027",
+    "period": "2023 - 2028",
     "university": "University of Toronto, Toronto, ON",
-    "gpa": "3.70 cGPA",
+    "gpa": "3.67 cGPA",
     "awards": [
       "Dean's List",
-      "Presidents Scholarship Award ($7,500)",
-      "Academic Excellence Recognition"
+      "President's Scholarship Award ($7,500)"
     ],
     "courseCategories": [
       {
