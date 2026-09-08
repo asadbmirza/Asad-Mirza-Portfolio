@@ -77,7 +77,7 @@
         "location": "Toronto, ON",
         "period": "June 2026 - August 2026",
         "bullets": [
-          "Architected and developed an LLM agent automating navigation configuration updates for Amazon Books, cutting end-to-end update time by 1+ hour per change and saving 60+ developer-hours per month (estimated 0.25–0.5 headcount).",
+          "Architected and developed an LLM agent automating navigation configuration updates for Amazon Books, cutting end-to-end update time by 1+ hour per change and saving 60+ developer-hours per month (estimated 0.25-0.5 headcount).",
           "Designed a self-serve chat service on AWS using Fargate, Bedrock, and DynamoDB; a compute cost analysis across EC2, Fargate, and Lambda identified a per-session design roughly 78x cheaper than always-on hosting.",
           "Engineered and integrated MCP servers, root-causing and fixing a blocking partner-team server failure and consolidating scattered validation rules into its API write path."
         ],

@@ -5,17 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: "#0a0a0a",
-        light: "#e5e5e5",
-        muted: "#a3a3a3",
-        accent: "#A78BFA",
-        "accent-dim": "#8B5CF6",
-        surface: "#141414",
-        "surface-light": "#1a1a1a",
+        dark: "#101210",
+        light: "#f1f3ec",
+        muted: "#a8ada3",
+        accent: "#b7e45a",
+        "accent-dim": "#9fcb45",
+        surface: "#171a17",
+        "surface-light": "#1d211c",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        heading: ["Space Grotesk", "system-ui", "sans-serif"],
+        sans: ["Arial Nova", "Aptos", "Helvetica Neue", "Arial", "sans-serif"],
+        heading: ["Arial Nova", "Aptos", "Helvetica Neue", "Arial", "sans-serif"],
       },
       fontSize: {
         "fluid-xl": "clamp(2.5rem, 5vw, 4.5rem)",
