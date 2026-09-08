@@ -31,7 +31,7 @@ export default function Hero() {
             {profile.heroSummary}
           </motion.p>
           <motion.div className="hero-actions" {...enter(0.3)}>
-            <a className="button button-primary" href="#projects">
+            <a className="button button-primary" href="#experience">
               View Work
             </a>
             <a
