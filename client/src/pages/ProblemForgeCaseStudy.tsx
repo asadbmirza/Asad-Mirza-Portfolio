@@ -5,7 +5,7 @@ import landingScreenshot from "../assets/ProblemForge/Screenshot 2026-09-23 2152
 import generationScreenshot from "../assets/ProblemForge/Screenshot 2026-09-23 214338.png";
 import aboutScreenshot from "../assets/ProblemForge/Screenshot 2026-09-23 215328.png";
 import workspaceScreenshot from "../assets/ProblemForge/Screenshot 2026-09-23 220158.png";
-import generationDemo from "../assets/ProblemForge/ProblemForge1.mp4";
+import generationDemo from "../assets/ProblemForge/ProblemForge1-web.mp4";
 import executionDemo from "../assets/ProblemForge/ProblemForge2.mp4";
 
 const { profile } = content;
