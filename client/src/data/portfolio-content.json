@@ -158,6 +158,17 @@
     "otherTitle": "Other Projects",
     "items": [
       {
+        "id": "problemforge",
+        "title": "ProblemForge",
+        "summary": "AI coding practice platform with runnable workspaces, staged challenges, and sandboxed execution.",
+        "description": "Turns interview questions and screenshots into verified Python and JavaScript workspaces with tests, progression, and isolated code execution.",
+        "repo": "https://github.com/asadbmirza/ProblemForge",
+        "caseStudyPath": "/projects/problemforge",
+        "stack": ["Next.js", "TypeScript", "Express", "Supabase", "Docker", "OpenRouter"],
+        "featured": true,
+        "imageKey": "problemforge"
+      },
+      {
         "id": "thumbmarks",
         "title": "Thumbmarks",
         "summary": "Chrome extension for visual bookmarking with exact scroll restore.",

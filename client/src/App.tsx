@@ -8,8 +8,11 @@ import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ProblemForgeCaseStudy from "./pages/ProblemForgeCaseStudy";
 
 export default function App() {
+  const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+
   useEffect(() => {
     const sectionId = decodeURIComponent(window.location.hash.slice(1));
     if (!sectionId) return;
@@ -32,6 +35,10 @@ export default function App() {
       root.style.scrollBehavior = previousScrollBehavior;
     };
   }, []);
+
+  if (currentPath === "/projects/problemforge") {
+    return <ProblemForgeCaseStudy />;
+  }
 
   return (
     <div className="site-shell">

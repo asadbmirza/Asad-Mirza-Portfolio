@@ -6,11 +6,13 @@ import imgPlanetze from "../assets/planetze.jpg";
 import imgQuiztime from "../assets/quiztime.png";
 import imgTetris from "../assets/tetris.png";
 import imgPokemon from "../assets/pbs.png";
+import imgProblemForge from "../assets/problemforge.png";
 
 const { projects } = content;
 type Project = (typeof projects.items)[number];
 
 const projectImages: Record<string, string> = {
+  problemforge: imgProblemForge,
   thumbmarks: imgThumbmarks,
   papertrail: imgPapertrail,
   planetze: imgPlanetze,
@@ -20,6 +22,7 @@ const projectImages: Record<string, string> = {
 };
 
 const projectImageSizes: Record<string, { width: number; height: number }> = {
+  problemforge: { width: 1393, height: 727 },
   thumbmarks: { width: 2004, height: 1276 },
   papertrail: { width: 806, height: 510 },
   planetze: { width: 1080, height: 1425 },
@@ -78,9 +81,39 @@ function ProjectCard({
 }) {
   const image = projectImages[project.id];
   const imageSize = projectImageSizes[project.id];
+  const caseStudyPath = "caseStudyPath" in project ? project.caseStudyPath : null;
   const className = isFeatured
     ? "project-card project-card-featured"
     : `project-card project-card-secondary project-slot-${slot}`;
+
+  if (caseStudyPath) {
+    return (
+      <Reveal className={className} delay={isFeatured ? 0 : 0.04 + slot * 0.04}>
+        <a className="project-card-link" href={caseStudyPath}>
+          <article>
+            <div className="project-media">
+              <img
+                src={image}
+                alt={`${project.title} coding practice platform`}
+                width={imageSize.width}
+                height={imageSize.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="project-copy">
+              <div>
+                <h3>{project.title}</h3>
+                <p>{project.summary}</p>
+              </div>
+              <strong className="project-card-cta">View Case Study</strong>
+            </div>
+            <p className="project-stack">{project.stack.join(", ")}</p>
+          </article>
+        </a>
+      </Reveal>
+    );
+  }
 
   return (
     <Reveal className={className} delay={isFeatured ? 0 : 0.04 + slot * 0.04}>
